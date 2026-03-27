@@ -247,13 +247,18 @@ x2 = t2 .* exp(-t2);            % Generate a non-causal signal
 plot(t2, x2);                   % Plot it (it exists before t=0)
 
 %% Extracting Even and Odd Components
+
 n = -5:5;                       % Define a discrete time vector covering positive and negative space
 u = (n >= 0);                   % Create the original unit step sequence
 u_n = (n <= 0);                 % Create the time-reversed (flipped) version of the unit step sequence
 ue = 1/2 * (u + u_n);           % Mathematically compute the symmetrical "Even" part of the signal
-stem(n, ue);                    % Plot the perfectly mirrored Even component
+stem(n, ue);
+figure
+% Plot the perfectly mirrored Even component
 uo = 1/2 * (u - u_n);           % Mathematically compute the inverted "Odd" part of the signal
-stem(n, uo);                    % Plot the inverted Odd component
+stem(n, uo);
+figure
+% Plot the inverted Odd component
 stem(n, uo+ue);                 % Prove that adding the Even and Odd parts restores the exact original signal
 
 %% 1. Time Reversal
